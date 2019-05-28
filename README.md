@@ -6,7 +6,7 @@ Python 3
 
 ## Konfigurace
 Klicová slova pro vyhledávání lze upravit v souboru `klicovaslova.txt`.
-Klíčová slova je lepší zadávat bez přípon 8 (např. místo 'rozbitý' jenom 'rozbit').
+Klíčová slova je lepší zadávat bez přípon (např. místo 'rozbitý' jenom 'rozbit').
 
 ## Spuštění
 ```
