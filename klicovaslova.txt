@@ -3,3 +3,4 @@ nokia
 samsung
 poskozen
 rozbit
+huawei
