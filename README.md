@@ -5,7 +5,8 @@ Program na monitorování inzerátu podle klíčových slov z SBazaru.
 Python 3
 
 ## Konfigurace
-Klicová slova pro vyhledávání lze upravit v souboru `klicovaslova.txt`
+Klicová slova pro vyhledávání lze upravit v souboru `klicovaslova.txt`.
+Klíčová slova je lepší zadávat bez přípon 8 (např. místo 'rozbitý' jenom 'rozbit').
 
 ## Spuštění
 ```
