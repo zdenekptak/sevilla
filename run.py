@@ -1,4 +1,5 @@
-from handlers import inzerat_handlers
+
+from inzerat_handlers import Inzerat, InzeratLoader, InzeratDownloader, InzeratSplitter, InzeratSaver, KeywordLoader, MailSender
 
 jmeno_souboru_top = "seznam_inzeratu_topovane.pkl"
 jmeno_souboru_netop = "seznam_inzeratu_netopovane.pkl"
