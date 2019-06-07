@@ -151,11 +151,19 @@ class InzeratSaver:
 
 class MailSender:
 
-    def posliemail(inzeraty_k_odeslani):
+    def posliemail(inzeraty_k_odeslani, posta_nazev_souboru):
 
-        sender_email = "ptakzdenek85@gmail.com"
-        receiver_email = "zptak@seznam.cz"
-        password = "zdenek+ptak85"
+        # otevreni souboru
+        posta_soubor = open(posta_nazev_souboru, 'r')
+
+        # nacitani prijemce ze souboru
+        prijemce = posta_soubor.readline().strip()
+
+        # nacteni odesilatele ze souboru
+        odesilatel = posta_soubor.readline().strip()
+
+        # nacteni hesla ze souboru
+        password = posta_soubor.readline().strip()
 
         # Create the plain-text and HTML version of your message
         html = "<html><body>"
@@ -167,15 +175,15 @@ class MailSender:
 
         message = MIMEText(html, "html")
         message["Subject"] = "Inzerat SBAZAR"
-        message["From"] = sender_email
-        message["To"] = receiver_email
+        message["From"] = odesilatel
+        message["To"] = prijemce
 
         # Create secure connection with server and send email
         context = ssl.create_default_context()
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-            server.login(sender_email, password)
+            server.login(odesilatel, password)
             server.sendmail(
-                sender_email, receiver_email, message.as_string()
+                odesilatel, prijemce, message.as_string()
             )
 
         print(f'Pocet odeslanych inzeratu: {len(inzeraty_k_odeslani)}')

@@ -5,6 +5,9 @@ jmeno_souboru_top = "seznam_inzeratu_topovane.pkl"
 jmeno_souboru_netop = "seznam_inzeratu_netopovane.pkl"
 URL = "https://www.sbazar.cz/94-mobil-bazar/praha?radius=50"
 seznam_klic_slov = "klicovaslova.txt"
+prijemce = "posta.txt"
+
+
 
 inzeraty_z_disku_top = InzeratLoader.nacti_top(jmeno_souboru_top)
 inzeraty_z_disku_netop = InzeratLoader.nacti_netop(jmeno_souboru_netop)
@@ -25,4 +28,4 @@ for x in inzeraty:
         bastakovy_inzeraty.append(x)
 
 if len(bastakovy_inzeraty) > 0:
-    MailSender.posliemail(bastakovy_inzeraty)
+    MailSender.posliemail(bastakovy_inzeraty, prijemce)
