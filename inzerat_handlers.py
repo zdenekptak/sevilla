@@ -159,7 +159,7 @@ class InzeratSaver:
 
 class MailSender:
 
-    def posliemail(inzeraty_k_odeslani, posta_nazev_souboru):
+    def posliemail(inzeraty_k_odeslani, posta_nazev_souboru)
 
         # otevreni souboru
         posta_soubor = open(posta_nazev_souboru, 'r')
