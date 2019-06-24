@@ -1,3 +1,6 @@
+from inzerat_handlers import Inzerat, InzeratLoader, InzeratDownloader, InzeratSplitter, InzeratSaver, KeywordLoader, MailSender
+
+
 jmeno_souboru_top = "seznam_inzeratu_topovane.pkl"
 jmeno_souboru_netop = "seznam_inzeratu_netopovane.pkl"
 URL = "https://www.sbazar.cz/94-mobil-bazar/praha?radius=50"
@@ -42,4 +45,3 @@ if len(bastakovy_inzeraty) > 0:
 
 else:
     print("Nebyly nalezeny žádné odpovídající inzeráty")
-
