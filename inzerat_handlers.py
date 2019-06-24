@@ -8,6 +8,8 @@ sys.setrecursionlimit(1000000)        # bez toho nefunguje pickle s nasimi objek
 import smtplib, ssl                   # odesila email
 from email.mime.text import MIMEText  # formatovani emailu
 
+from inzerat_handlers import Inzerat, InzeratLoader, InzeratDownloader, InzeratSplitter, InzeratSaver, KeywordLoader, MailSender
+
 
 class Inzerat:
 
@@ -195,5 +197,3 @@ class MailSender:
             )
 
         print(f'Pocet odeslanych inzeratu: {len(inzeraty_k_odeslani)}')
-
-    
