@@ -75,8 +75,12 @@ class InzeratDownloader:
             inzerat.topovany_inzerat()
             inzerat.nadpis_a_popisek()
             if inzerat.top:
-                if inzerat.odkaz == zname_top_inzeraty[0].odkaz:
+                ulozene_top_odkazy = []
+                for znamy_top_odkaz in zname_top_inzeraty:
+                    ulozene_top_odkazy.append(znamy_top_odkaz.odkaz)
+                if inzerat.odkaz in ulozene_top_odkazy:
                     break
+
                 nove_top_inzeraty.append(inzerat)
                 print(f'Stazen topovany inzerat {inzerat.nadpis}')
             time.sleep(2)
@@ -88,8 +92,12 @@ class InzeratDownloader:
             inzerat.topovany_inzerat()
             inzerat.nadpis_a_popisek()
             if not inzerat.top:
-                if inzerat.odkaz == zname_netop_inzeraty[0].odkaz:
+                ulozene_netop_inzeraty = []
+                for znamy_netop_odkaz in zname_netop_inzeraty:
+                    ulozene_netop_inzeraty.append(znamy_netop_odkaz.odkaz)
+                if inzerat.odkaz in ulozene_netop_inzeraty:
                     break
+
                 nove_netop_inzeraty.append(inzerat)
                 print(f'Stazen netopovany inzerat {inzerat.nadpis}')
             time.sleep(2)
@@ -151,7 +159,7 @@ class InzeratSaver:
 
 class MailSender:
 
-    def posliemail(inzeraty_k_odeslani, posta_nazev_souboru):
+    def posliemail(inzeraty_k_odeslani, posta_nazev_souboru)
 
         # otevreni souboru
         posta_soubor = open(posta_nazev_souboru, 'r')
