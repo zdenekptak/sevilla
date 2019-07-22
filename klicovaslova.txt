@@ -1,6 +1,5 @@
-apple
-nokia
-samsung
 poskozen
 rozbit
-huawei
+praskl
+nefunkcn
+vytopen
