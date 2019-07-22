@@ -14,5 +14,8 @@ V souboru 'posta.txt' lze nastavit příjemce, odesílatele a heslo k emailu ode
 ```
 python run.py
 ```
+## Proces Diagram
+![SevillaProcesDiagram](pictures/SevillaProcesDiagram.png "Sevilla Proces Diagram")
+
 ## Class Diagram
 ![SevillaClassDiagram](pictures/SevillaClassDiagram.png "Sevilla Class Diagram")
