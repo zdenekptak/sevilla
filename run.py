@@ -8,7 +8,6 @@ seznam_klic_slov = "klicovaslova.txt"
 prijemce = "posta.txt"
 min_ulozenych_inz = 10
 
-
 inzeraty_z_disku_top = InzeratLoader.nacti_top(jmeno_souboru_top)
 inzeraty_z_disku_netop = InzeratLoader.nacti_netop(jmeno_souboru_netop)
 
@@ -42,6 +41,5 @@ for x in nove_inzeraty:
 
 if len(bastakovy_inzeraty) > 0:
     MailSender.posliemail(bastakovy_inzeraty, prijemce)
-
 else:
     print("Nebyly nalezeny žádné odpovídající inzeráty")

@@ -107,16 +107,27 @@ class InzeratDownloader:
 class InzeratLoader:
 
     def nacti_top(jmeno_souboru):
-        zname_top_inzeraty = pickle.load(open(jmeno_souboru, "rb"))
-        print('Nacteno', len(zname_top_inzeraty), 'topovanych inzeratu z disku')
-        print(f'Prvni nacteny topovany inzerat z disku:  {zname_top_inzeraty[0].nadpis}')
+        try:
+                zname_top_inzeraty = pickle.load(open(jmeno_souboru, 'rb'))
+                print('Nacteno', len(zname_top_inzeraty), 'topovanych inzeratu z disku')
+                print(f'Prvni nacteny topovany inzerat z disku:  {zname_top_inzeraty[0].nadpis}')
+        except FileNotFoundError:
+                zname_top_inzeraty = []
+                print('Nebyl nalezen soubor se znamymi topovanymi inzeraty')
+                print('Pokracuji dale s prazdnym seznamem')
         return zname_top_inzeraty
 
     def nacti_netop(jmeno_souboru):
-        zname_netop_inzeraty = pickle.load(open(jmeno_souboru, "rb"))
-        print('Nacteno', len(zname_netop_inzeraty), 'netopovanych inzeratu z disku')
-        print(f'Prvni nacteny netopovany inzerat z disku:  {zname_netop_inzeraty[0].nadpis}')
+        try:
+                zname_netop_inzeraty = pickle.load(open(jmeno_souboru, 'rb'))
+                print('Nacteno', len(zname_netop_inzeraty), 'netopovanych inzeratu z disku')
+                print(f'Prvni nacteny netopovany inzerat z disku:  {zname_netop_inzeraty[0].nadpis}')
+        except FileNotFoundError:
+                zname_netop_inzeraty = []
+                print('Nebyl nalezen soubor se znamymi netopovanymi inzeraty')
+                print('Pokracuji dale s prazdnym seznamem')
         return zname_netop_inzeraty
+
 
 class KeywordLoader:
 
@@ -188,7 +199,7 @@ class MailSender:
 
         # Create secure connection with server and send email
         context = ssl.create_default_context()
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+        with smtplib.SMTP_SSL("smtp-140148.m48.wedos.net", 465, context=context) as server:
             server.login(odesilatel, password)
             server.sendmail(
                 odesilatel, prijemce, message.as_string()
