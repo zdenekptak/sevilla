@@ -23,7 +23,7 @@ class Inzerat:
         else:
             self.top = False
 
-    def nadpis_a_popisek(self):
+    def nacteni_detailu(self):
         # Stahne stranku s vyrobkem a ulozi do promenne "stranka_inzeratu".
         stranka_inzeratu = requests.get(self.odkaz)
 
@@ -33,6 +33,7 @@ class Inzerat:
         # Extrahuje prvni "h1" a "p" na html strance.
         self.nadpis = citelny_html.find('h1').get_text()
         self.popisek = citelny_html.find('p').get_text()
+        self.cena = citelny_html.find('b', class_='c-price__price').get_text()
 
     def je_relevantni(self, klicova_slova):                         # najde inzerat podle klicovych slov
 
@@ -45,24 +46,6 @@ class Inzerat:
 class InzeratDownloader:
 
     @classmethod
-    def stahni_vse(cls, url):
-        sbazar = requests.get(url)
-        mobile = BeautifulSoup(sbazar.content, 'html.parser')   #upravime stranku do strojove podoby a ulozime do promenne
-        bloky_div = mobile.find_all('div', class_='c-item__group')   #Najde vsechny bloky 'div' s inzeratem a vrati pocet
-
-        vsechny_inzeraty = []
-        for blok in bloky_div:
-            inzerat = Inzerat(blok)
-            inzerat.hledani_html_odkazu()
-            inzerat.topovany_inzerat()
-            inzerat.nadpis_a_popisek()
-            vsechny_inzeraty.append(inzerat)
-            print(f'Stazen inzerat {inzerat.odkaz}')
-            time.sleep(2)
-
-        return vsechny_inzeraty
-
-    @classmethod
     def stahni(cls, url, zname_top_inzeraty, zname_netop_inzeraty):
         sbazar = requests.get(url)
         mobile = BeautifulSoup(sbazar.content, 'html.parser')   #upravime stranku do strojove podoby a ulozime do promenne
@@ -73,7 +56,8 @@ class InzeratDownloader:
             inzerat = Inzerat(blok)
             inzerat.hledani_html_odkazu()
             inzerat.topovany_inzerat()
-            inzerat.nadpis_a_popisek()
+            inzerat.nacteni_detailu()
+
             if inzerat.top:
                 ulozene_top_odkazy = []
                 for znamy_top_odkaz in zname_top_inzeraty:
@@ -90,7 +74,7 @@ class InzeratDownloader:
             inzerat = Inzerat(blok)
             inzerat.hledani_html_odkazu()
             inzerat.topovany_inzerat()
-            inzerat.nadpis_a_popisek()
+            inzerat.nacteni_detailu()
             if not inzerat.top:
                 ulozene_netop_inzeraty = []
                 for znamy_netop_odkaz in zname_netop_inzeraty:
@@ -189,6 +173,7 @@ class MailSender:
         for i in inzeraty_k_odeslani:
             html += f"<h1>{i.nadpis}</h1>"
             html += f"<p>{i.popisek}</p>"
+            html += f"<b>{i.cena} Kč</b><br />"
             html += f'<a href="{i.odkaz}">{i.odkaz}</a>'
         html += "</body></html>"
 
@@ -199,10 +184,12 @@ class MailSender:
 
         # Create secure connection with server and send email
         context = ssl.create_default_context()
-        with smtplib.SMTP_SSL("smtp-140148.m48.wedos.net", 465, context=context) as server:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:  #smtp.gmail.com smtp-140148.m48.wedos.net
             server.login(odesilatel, password)
             server.sendmail(
                 odesilatel, prijemce, message.as_string()
             )
 
         print(f'Pocet odeslanych inzeratu: {len(inzeraty_k_odeslani)}')
+
+    
