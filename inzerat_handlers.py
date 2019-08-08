@@ -168,6 +168,9 @@ class MailSender:
         # nacteni hesla ze souboru
         password = posta_soubor.readline().strip()
 
+        # nacteni SMTP adresy ze souboru
+        SMTP = posta_soubor.readline().strip()
+
         # Create the plain-text and HTML version of your message
         html = "<html><body>"
         for i in inzeraty_k_odeslani:
@@ -184,7 +187,7 @@ class MailSender:
 
         # Create secure connection with server and send email
         context = ssl.create_default_context()
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:  #smtp.gmail.com smtp-140148.m48.wedos.net
+        with smtplib.SMTP_SSL(SMTP, 465, context=context) as server:  #smtp.gmail.com smtp-140148.m48.wedos.net
             server.login(odesilatel, password)
             server.sendmail(
                 odesilatel, prijemce, message.as_string()
