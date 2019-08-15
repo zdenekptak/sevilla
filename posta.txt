@@ -1,4 +1,0 @@
-prijemce@xxx.cz
-odesilate@xxx.cz
-*****
-SMTP
