@@ -1,6 +1,6 @@
 {
     "odesilatel": "odesilate@xxx.cz",
-    "prijemce": "prijemce@xxx.cz"
+    "prijemce": "prijemce@xxx.cz",
     "heslo": "*****",
     "smtp_server": "smtp.gmail.com"
 }
