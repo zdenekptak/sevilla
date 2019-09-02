@@ -1,0 +1,11 @@
+Požadované balíèky
+
+requests                       # stahuje html stranku
+time                           # vlozi casovou prodlevu
+BeautifulSoup                  # prelozi stranku do strojove zpracovatelne podoby
+unidecode                      # prece  s diakritikou
+pickle                         # ukladani do souboru
+sys                            # zvysi limit pro rekurze
+smtplib, ssl                   # odesila email
+MIMEText                       # formatovani emailu
+json                           # zpracovava json soubory
