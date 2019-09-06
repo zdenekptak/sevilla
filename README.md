@@ -5,7 +5,12 @@ Program na monitorování inzerátu podle klíčových slov z SBazaru.
 Python 3
 
 ## Konfigurace
-V souboru 'config.json' lze nastavit příjemce, odesílatele a heslo k emailu odesílatele. Také se zde nastavují klíčová slova ("keywords"). Klíčová slova je lepší zadávat bez přípon (např. místo 'rozbitý' jenom 'rozbit').
+V souboru `config.json` se nastavuje odesílání emailů a klíčová slova pro filtrování inzerátů.
+* Odesilatel emailů
+* Heslo ke schránce odesilatele
+* Příjemce emailů
+* SMTP server
+* Klíčová slova, která je lepší zadávat bez přípon (např. místo 'rozbitý' jen 'rozbit')
 
 ## Spuštění
 ```

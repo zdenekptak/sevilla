@@ -1,6 +1,14 @@
 {
     "odesilatel": "odesilate@xxx.cz",
-    "prijemce": "prijemce@xxx.cz",
     "heslo": "*****",
-    "smtp_server": "smtp.gmail.com"
+    "prijemce": "prijemce@xxx.cz",
+    "smtp_server": "smtp.gmail.com",
+    "keywords": [
+                "poskozen",
+                "rozbit",
+                "praskl",
+                "nefunkcn",
+                "vytopeni",
+                "samsung"
+                ]
 }

@@ -4,8 +4,7 @@ from inzerat_handlers import Inzerat, InzeratLoader, InzeratDownloader, InzeratS
 jmeno_souboru_top = "seznam_inzeratu_topovane.pkl"
 jmeno_souboru_netop = "seznam_inzeratu_netopovane.pkl"
 URL = "https://www.sbazar.cz/94-mobil-bazar/praha?radius=50"
-seznam_klic_slov = "klicovaslova.txt"
-prijemce = "config.json"
+config = "config.json"
 min_ulozenych_inz = 10
 
 inzeraty_z_disku_top = InzeratLoader.nacti_top(jmeno_souboru_top)
@@ -27,12 +26,13 @@ ukladane_netop_inzeraty = rozdelene_inzeraty_netop
 if len(ukladane_netop_inzeraty) < min_ulozenych_inz:
     pocet_netop_doplneni = min_ulozenych_inz - len(ukladane_netop_inzeraty)
     ukladane_netop_inzeraty += inzeraty_z_disku_netop[0:pocet_netop_doplneni]
-    
+
 
 InzeratSaver.uloz_top_inzerat(ukladane_top_inzeraty, jmeno_souboru_top)
 InzeratSaver.uloz_netop_inzerat(ukladane_netop_inzeraty, jmeno_souboru_netop)
 
-klicova_slova = KeywordLoader.nacti_klicova_slova(seznam_klic_slov)
+
+klicova_slova = KeywordLoader.nacti_klicova_slova(config)
 
 bastakovy_inzeraty= []
 for x in nove_inzeraty:
@@ -40,6 +40,6 @@ for x in nove_inzeraty:
         bastakovy_inzeraty.append(x)
 
 if len(bastakovy_inzeraty) > 0:
-    MailSender.posliemail(bastakovy_inzeraty, prijemce)
+    MailSender.posliemail(bastakovy_inzeraty, config)
 else:
     print("Nebyly nalezeny žádné odpovídající inzeráty")
