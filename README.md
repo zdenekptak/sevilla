@@ -1,11 +1,12 @@
-# Sevilla
+﻿# Sevilla
 Program na monitorování inzerátu podle klíčových slov z SBazaru.
 
 ## Prerekvizity
 Python 3
 
 ## Konfigurace
-V souboru `config.json` se nastavuje odesílání emailů a klíčová slova pro filtrování inzerátů.
+V souboru `config.json` se nastavuje konkrétní url z SBazaru, odesílání emailů a klíčová slova pro filtrování inzerátů.
+* URL
 * Odesilatel emailů
 * Heslo ke schránce odesilatele
 * Příjemce emailů

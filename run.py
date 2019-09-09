@@ -3,14 +3,13 @@ from inzerat_handlers import Inzerat, InzeratLoader, InzeratDownloader, InzeratS
 
 jmeno_souboru_top = "seznam_inzeratu_topovane.pkl"
 jmeno_souboru_netop = "seznam_inzeratu_netopovane.pkl"
-URL = "https://www.sbazar.cz/94-mobil-bazar/praha?radius=50"
 config = "config.json"
 min_ulozenych_inz = 10
 
 inzeraty_z_disku_top = InzeratLoader.nacti_top(jmeno_souboru_top)
 inzeraty_z_disku_netop = InzeratLoader.nacti_netop(jmeno_souboru_netop)
 
-nove_inzeraty = InzeratDownloader.stahni(URL, inzeraty_z_disku_top, inzeraty_z_disku_netop)
+nove_inzeraty = InzeratDownloader.stahni(config, inzeraty_z_disku_top, inzeraty_z_disku_netop)
 
 rozdelene_inzeraty_top = InzeratSplitter.topovane_inzeraty(nove_inzeraty)
 rozdelene_inzeraty_netop = InzeratSplitter.netopovane_inzeraty(nove_inzeraty)

@@ -47,7 +47,11 @@ class Inzerat:
 class InzeratDownloader:
 
     @classmethod
-    def stahni(cls, url, zname_top_inzeraty, zname_netop_inzeraty):
+    def stahni(cls, config_soubor, zname_top_inzeraty, zname_netop_inzeraty):
+        with open(config_soubor) as json_file:
+            config = json.load(json_file)
+            url = config["url"]
+
         sbazar = requests.get(url)
         mobile = BeautifulSoup(sbazar.content, 'html.parser')   #upravime stranku do strojove podoby a ulozime do promenne
         bloky_div = mobile.find_all('div', class_='c-item__group')   #Najde vsechny bloky 'div' s inzeratem a vrati pocet
