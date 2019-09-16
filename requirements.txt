@@ -1,0 +1,10 @@
+BeautifulSoup
+json
+MIMEText
+pickle
+requests
+smtplib
+ssl 
+sys
+time
+unidecode
