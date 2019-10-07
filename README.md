@@ -11,6 +11,7 @@ V souboru `config.json` se nastavuje konkrétní url z SBazaru, odesílání ema
 * Heslo ke schránce odesilatele
 * Příjemce emailů
 * SMTP server
+* SMTP port
 * Klíčová slova, která je lepší zadávat bez přípon (např. místo 'rozbitý' jen 'rozbit')
 
 ## Spuštění

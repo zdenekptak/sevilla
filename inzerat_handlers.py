@@ -174,6 +174,7 @@ class MailSender:
             odesilatel = config["odesilatel"]
             password = config["heslo"]
             smtp = config["smtp_server"]
+            smtp_port = config["smtp_port"]
 
         # Create the plain-text and HTML version of your message
         html = "<html><body>"
@@ -191,7 +192,7 @@ class MailSender:
 
         # Create secure connection with server and send email
         context = ssl.create_default_context()
-        with smtplib.SMTP_SSL(smtp, 465, context=context) as server:  #smtp.gmail.com smtp-140148.m48.wedos.net
+        with smtplib.SMTP_SSL(smtp, smtp_port, context=context) as server:  #smtp.gmail.com smtp-140148.m48.wedos.net
             server.login(odesilatel, password)
             server.sendmail(
                 odesilatel, prijemce, message.as_string()
