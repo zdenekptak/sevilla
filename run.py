@@ -33,12 +33,12 @@ InzeratSaver.uloz_netop_inzerat(ukladane_netop_inzeraty, jmeno_souboru_netop)
 
 klicova_slova = KeywordLoader.nacti_klicova_slova(config)
 
-bastakovy_inzeraty= []
+inzeraty_roztridene_podle_klic_slov = []
 for x in nove_inzeraty:
     if x.je_relevantni(klicova_slova):
-        bastakovy_inzeraty.append(x)
+        inzeraty_roztridene_podle_klic_slov.append(x)
 
-if len(bastakovy_inzeraty) > 0:
-    MailSender.posliemail(bastakovy_inzeraty, config)
+if len(inzeraty_roztridene_podle_klic_slov) > 0:
+    MailSender.posliemail(inzeraty_roztridene_podle_klic_slov, config)
 else:
     print("Nebyly nalezeny žádné odpovídající inzeráty")

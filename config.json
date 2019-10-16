@@ -4,6 +4,7 @@
     "heslo": "*****",
     "prijemce": "prijemce@xxx.cz",
     "smtp_server": "smtp.gmail.com",
+    "smtp_port": 465,
     "keywords": [
                 "poskozen",
                 "rozbit",
